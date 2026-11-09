@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BUE Civil Engineering Projects</title>
+<meta name="description" content="Interactive recruitment projects from the Department of Civil Engineering, The British University in Egypt.">
+<link rel="icon" href="assets/foe-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: white logo band, short hero, two project cards side by side (stacked on phones), quiet footer */
+:root{
+  --bg:#F3F4F7; --panel:#FFFFFF; --ink:#141A2E; --muted:#596079; --line:#D9DCE5;
+  --navy:#22307A; --red:#D2232A; --tint-a:#E7EAF3; --tint-b:#F6E9E9; --draw:#22307A; --draw-2:#D2232A; --draw-3:#8D94AE;
+  --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1220; --panel:#161B2E; --ink:#E6E9F2; --muted:#9AA1B8; --line:#2A3150;
+  --navy:#8E9CF0; --red:#F0646A; --tint-a:#1C2340; --tint-b:#2A1E2A; --draw:#AEB8F5; --draw-2:#F0646A; --draw-3:#5E6788;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1220; --panel:#161B2E; --ink:#E6E9F2; --muted:#9AA1B8; --line:#2A3150;
+  --navy:#8E9CF0; --red:#F0646A; --tint-a:#1C2340; --tint-b:#2A1E2A; --draw:#AEB8F5; --draw-2:#F0646A; --draw-3:#5E6788;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+
+/* logo band: always white so the official artwork reads correctly in both themes */
+.brand{background:#FFFFFF;border-bottom:4px solid var(--red);padding-top:env(safe-area-inset-top,0px)}
+.brand .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:16px}
+.brand img{display:block;height:auto}
+.brand .bue{width:min(240px,46vw)}
+.brand .foe{width:min(64px,15vw)}
+.flag{height:4px;background:linear-gradient(90deg,#22307A 0 33.3%,#FFFFFF 33.3% 66.6%,#1A1A1A 66.6%)}
+
+.hero .wrap{padding-block:56px 36px;display:grid;gap:14px}
+.eyebrow{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin:0}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(40px,7vw,72px);line-height:.95;letter-spacing:.005em;margin:0;text-wrap:balance}
+h1 span{color:var(--navy)}
+.lead{font-size:18px;color:var(--muted);max-width:62ch;margin:0}
+
+.projects .wrap{padding-block:8px 64px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.card{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;min-width:0}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px -18px rgba(20,26,46,.45);border-color:var(--navy)}
+.art{aspect-ratio:16/9;max-width:100%;display:block;width:100%;border-bottom:1px solid var(--line)}
+.card.s .art{background:var(--tint-a)}
+.card.c .art{background:var(--tint-b)}
+.art svg{display:block;width:100%;height:100%}
+.body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;padding:3px 8px;border-radius:4px;border:1px solid var(--line);color:var(--muted)}
+.card h2{font-family:var(--f-display);font-weight:600;font-size:34px;line-height:1;margin:0}
+.card p{margin:0;color:var(--muted);max-width:60ch}
+.go{margin-top:auto;padding-top:6px;font-weight:600;color:var(--navy);display:inline-flex;align-items:center;gap:8px}
+.go svg{width:18px;height:18px;transition:transform .18s ease}
+.card:hover .go svg{transform:translateX(4px)}
+
+footer{margin-top:auto;border-top:1px solid var(--line)}
+footer .wrap{padding-block:22px calc(22px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;font-size:13.5px;color:var(--muted)}
+footer a{color:var(--navy)}
+
+/* drawing strokes */
+.ln{fill:none;stroke:var(--draw);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ln.thin{stroke-width:1.3}
+.ln.fade{stroke:var(--draw-3)}
+.ln.hot{stroke:var(--draw-2)}
+.fill-hot{fill:var(--draw-2)}
+.fill-draw{fill:var(--draw)}
+.lbl{font-family:var(--f-mono);font-size:11px;fill:var(--draw-3);letter-spacing:.06em}
+
+@media (max-width:760px){
+  .grid{grid-template-columns:1fr}
+  .hero .wrap{padding-block:36px 24px}
+  .lead{font-size:16.5px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="brand">
+  <div class="wrap">
+    <img class="bue" src="assets/bue-logo.png" alt="The British University in Egypt" width="600" height="214">
+    <img class="foe" src="assets/foe-logo.png" alt="Faculty of Engineering" width="144" height="200">
+  </div>
+</header>
+<div class="flag" aria-hidden="true"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Faculty of Engineering · Department of Civil Engineering</p>
+    <h1>Build it. Test it. <span>Walk through it.</span></h1>
+    <p class="lead">Interactive projects from the Department of Civil Engineering at The British University in Egypt. They run in a web browser, with nothing to install, and let you try what structural engineers do: design a frame, load it, and explore a real steel building.</p>
+  </div>
+</section>
+
+<main class="projects">
+  <div class="wrap">
+    <div class="grid">
+
+      <a class="card s" href="/structura-3d/">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet">
+            <!-- ground -->
+            <path class="ln fade thin" d="M40 150 L280 150"/>
+            <!-- swaying braced frame, 3 storeys, 2 bays -->
+            <g>
+              <path class="ln" d="M110 150 L114 112 L119 74 L125 38"/>
+              <path class="ln" d="M160 150 L164 112 L169 74 L175 38"/>
+              <path class="ln" d="M210 150 L214 112 L219 74 L225 38"/>
+              <path class="ln" d="M114 112 L214 112 M119 74 L219 74 M125 38 L225 38"/>
+              <path class="ln hot" d="M110 150 L164 112 M160 150 L114 112"/>
+              <path class="ln hot" d="M164 112 L219 74 M214 112 L169 74"/>
+              <path class="ln hot" d="M169 74 L225 38 M219 74 L175 38"/>
+              <path class="ln fade thin" d="M110 150 L110 38 M210 150 L210 38" stroke-dasharray="3 4"/>
+            </g>
+            <!-- footings -->
+            <path class="ln thin" d="M100 150 h20 M150 150 h20 M200 150 h20"/>
+            <!-- wind arrows -->
+            <g class="ln thin">
+              <path d="M44 56 h44 m-8 -6 l8 6 l-8 6"/>
+              <path d="M36 88 h52 m-8 -6 l8 6 l-8 6"/>
+              <path d="M44 120 h44 m-8 -6 l8 6 l-8 6"/>
+            </g>
+            <text class="lbl" x="44" y="40">WIND</text>
+            <text class="lbl" x="236" y="42">Δ</text>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="tags"><span class="tag">Design game</span><span class="tag">Phones · tablets · computers</span></div>
+          <h2>STRUCTURA 3D</h2>
+          <p>Build a steel frame from columns, beams, bracing, shear walls and floors, keep to a budget, then test it against wind and earthquakes. A real 3D stiffness analysis shows your building sway, twist, or collapse.</p>
+          <span class="go">Open STRUCTURA 3D <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+        </div>
+      </a>
+
+      <a class="card c" href="/cardington-vr/">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid meet">
+            <path class="ln fade thin" d="M30 160 L290 160"/>
+            <!-- eight-storey frame in perspective -->
+            <g>
+              <path class="ln" d="M70 160 V30 M110 160 V30 M150 160 V30 M190 160 V30 M230 160 V30"/>
+              <path class="ln thin" d="M70 160 L84 150 V20 L70 30 M230 160 L244 150 V20 L230 30 M84 20 H244"/>
+              <path class="ln thin" d="M70 30 H230 M70 46 H230 M70 62 H230 M70 78 H230 M70 94 H230 M70 110 H230 M70 126 H230 M70 142 H230"/>
+              <path class="ln hot" d="M150 160 L190 142 M190 160 L150 142 M150 142 L190 126 M190 142 L150 126 M150 126 L190 110 M190 126 L150 110 M150 110 L190 94 M190 110 L150 94"/>
+            </g>
+            <!-- people and arrows for the fire drill -->
+            <g>
+              <circle class="fill-draw" cx="252" cy="148" r="3"/><path class="ln thin" d="M252 151 v7"/>
+              <circle class="fill-draw" cx="262" cy="148" r="3"/><path class="ln thin" d="M262 151 v7"/>
+              <circle class="fill-draw" cx="272" cy="148" r="3"/><path class="ln thin" d="M272 151 v7"/>
+              <path class="ln hot thin" d="M234 154 h12 m-5 -4 l5 4 l-5 4"/>
+            </g>
+            <!-- VR headset -->
+            <g transform="translate(16 96)">
+              <rect class="ln" x="0" y="0" width="40" height="22" rx="6"/>
+              <circle class="ln thin" cx="12" cy="11" r="4.5"/><circle class="ln thin" cx="28" cy="11" r="4.5"/>
+            </g>
+            <text class="lbl" x="16" y="84">VR</text>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="tags"><span class="tag">3D and VR walkthrough</span><span class="tag">Computers · Meta Quest</span></div>
+          <h2>Cardington VR</h2>
+          <p>Explore the eight-storey Cardington steel test frame at full scale. Add glass facades and office interiors, walk the floors, ride the lifts, and run a fire drill that evacuates the whole building by its stairs. Opens in VR on a Meta Quest.</p>
+          <span class="go">Open Cardington VR <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Department of Civil Engineering · Faculty of Engineering · The British University in Egypt</span>
+    <a href="https://github.com/bue-civil">Projects on GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>
